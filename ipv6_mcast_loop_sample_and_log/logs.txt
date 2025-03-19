@@ -1,0 +1,97 @@
+Create zeth interface:
+sayooj@aerlync:~/ws/net-tools$ ./net-setup.sh
+Run this script as a root user!
+[sudo] password for sayooj:
+Using ./zeth.conf configuration file.
+Creating zeth
+
+==================================================================================================
+
+IPV6_MULTICAST_LOOP set as enabled:
+
+west build -t run
+-- west build: running target run
+[3/6] Linking C executable zephyr/zephyr.elf
+Generating files from /home/sayooj/ws/zephyr-fork/build/zephyr/zephyr.elf for board: native_sim
+[5/6] cd /home/sayooj/ws/zephyr-fork/build && /home/sayooj/ws/zephyr-fork/build/zephyr/zephyr.exe
+WARNING: Using a test - not safe - entropy source
+*** Booting Zephyr OS build 784bdbedb240 ***
+Starting IPv6 multicast server, sending to ff02::1:12345
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+ipv6_mcast_loop 1 is_ipv6_addr 1
+Copy consumed
+Sent multicast message: Hello from IPv6 multicast server!
+
+==================================================================================================
+
+TCPDUMP to show packet sent out on zeth
+sayooj@aerlync:~/zephyr-project$ tcpdump -i zeth
+tcpdump: zeth: You don't have permission to capture on that device
+(socket: Operation not permitted)
+sayooj@aerlync:~/zephyr-project$ sudo !!
+sudo tcpdump -i zeth
+[sudo] password for sayooj:
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on zeth, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+13:17:31.009901 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:32.019895 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:33.030026 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:34.039527 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:35.049687 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:36.059903 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:37.070019 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:38.080008 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:39.089974 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:40.100008 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:41.110082 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:42.119965 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:43.130106 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+13:17:44.139945 IP6 fe80::5eff:fe00:5331.64484 > ip6-allnodes.12345: UDP, length 33
+

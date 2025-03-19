@@ -1,0 +1,21 @@
+diff --git a/subsys/net/ip/net_core.c b/subsys/net/ip/net_core.c
+index b5dc7a7bf2c..3a33e3d6145 100644
+--- a/subsys/net/ip/net_core.c
++++ b/subsys/net/ip/net_core.c
+@@ -416,6 +416,7 @@ int net_try_send_data(struct net_pkt *pkt, k_timeout_t timeout)
+ #if defined(CONFIG_NET_IPV6)
+ 	if (net_pkt_family(pkt) == AF_INET6 && net_ipv6_is_addr_mcast(dest)) {
+ 		if (ctx != NULL && net_context_get_ipv6_mcast_loop(ctx)) {
++			printk("ipv6_mcast_loop %d is_ipv6_addr %d\n", net_context_get_ipv6_mcast_loop(ctx), net_ipv6_is_addr_mcast(dest));
+ 			struct net_pkt *clone = net_pkt_clone(pkt, K_NO_WAIT);
+ 
+ 			if (likely(clone != NULL)) {
+@@ -425,6 +426,8 @@ int net_try_send_data(struct net_pkt *pkt, k_timeout_t timeout)
+ 						net_stats_update_ipv6_drop(net_pkt_iface(pkt));
+ 					}
+ 					net_pkt_unref(clone);
++				} else {
++					printk("Copy consumed\n");
+ 				}
+ 			} else {
+ 				NET_DBG("Failed to clone multicast packet");
